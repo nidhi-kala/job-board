@@ -1,9 +1,11 @@
 import { createJob } from "../constants";
 import React from "react";
 import JobList from "./JobList";
+import JobForm from "./Form";
+
 export default class Home extends React.Component {
   handleNewJob() {
-    let newJob = createJob({
+    createJob({
       title: "third job",
       description: "lorem10",
     })
@@ -13,8 +15,8 @@ export default class Home extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.handleNewJob}>New Job</button>
         <JobList />
+        <JobForm />
       </div>
     );
   }

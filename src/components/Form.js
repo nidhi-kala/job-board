@@ -16,7 +16,6 @@ export default class JobForm extends React.Component {
     let newState = {};
     newState[e.target.name] = e.target.value;
     this.setState(newState);
-    console.log(e.target.value);
   }
 
   handleSubmit(e) {

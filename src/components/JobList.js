@@ -6,13 +6,7 @@ export default class JobList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      jobs: [
-        {
-          _id: 0,
-          title: "No jobs created yet",
-          description: "Job Description, Click new job to create",
-        },
-      ],
+      jobs: [],
     };
   }
   componentDidMount() {
@@ -30,10 +24,12 @@ export default class JobList extends React.Component {
 
   render() {
     let jobLength = this.state.jobs.length;
+    let h1Text =
+      jobLength > 0 ? `Number Of Jobs: ${jobLength} ` : "no jobs founds";
+
     return (
       <div>
-        <h1>Number of jobs: {jobLength}</h1>
-
+        <h1> {h1Text} </h1>
         {this.state.jobs.map((job) => (
           <Job key={job._id} job={job} jobLength={jobLength} />
         ))}

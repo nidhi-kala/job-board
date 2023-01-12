@@ -1,8 +1,7 @@
 export const BASE_URL =
-  "https://crudcrud.com/api/d2e5c8db56274dc98ade3d6075e9ed6e";
+  "https://crudcrud.com/api/797753c3eccf4f1eaf3664d8119aa483";
 
 export async function createJob(data, url = `${BASE_URL}/jobs`) {
-  console.log(JSON.stringify(data));
   const response = await fetch(url, {
     method: "POST",
     mode: "cors",

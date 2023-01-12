@@ -1,47 +1,46 @@
 import { createJob } from "../constants";
+import { redirect, useNavigate } from "react-router-dom";
+
 import React from "react";
+import { useState } from "react";
 
-export default class JobForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: "",
-      description: "",
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+const JobForm = () => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  let navigate = useNavigate();
 
-  handleChange(e) {
-    let newState = {};
-    newState[e.target.name] = e.target.value;
-    this.setState(newState);
-  }
-
-  handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     createJob({
-      title: this.state.title,
-      description: this.state.description,
-    });
-  }
+      title: title,
+      description: description,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        navigate("/");
+      });
+  };
 
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="">Title </label>
-          <input type="text" name="title" onChange={this.handleChange} />
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="title">Title </label>
+        <input
+          type="text"
+          name="title"
+          onChange={(e) => setTitle(e.target.value)}
+        />
 
-          <label htmlFor=""> Description</label>
-          <textarea
-            type="text"
-            name="description"
-            onChange={this.handleChange}
-          />
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
-    );
-  }
-}
+        <label htmlFor="description"> Description</label>
+        <textarea
+          type="text"
+          name="description"
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  );
+};
+
+export default JobForm;

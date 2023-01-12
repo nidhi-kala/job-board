@@ -2,22 +2,25 @@ import { createJob } from "../constants";
 import React from "react";
 import JobList from "./JobList";
 import JobForm from "./Form";
+import NavBar from "./Nav";
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 
-export default class Home extends React.Component {
-  handleNewJob() {
-    createJob({
-      title: "third job",
-      description: "lorem10",
-    })
-      .then((response) => console.log(response.json()))
-      .catch((error) => console.log(error));
-  }
-  render() {
-    return (
-      <div>
-        <JobList />
-        <JobForm />
-      </div>
-    );
-  }
-}
+const routes = [
+  { path: "/", element: <JobList /> },
+  { path: "/jobForm", element: <JobForm /> },
+];
+const Home = () => {
+  return (
+    <main>
+      <Router>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<JobList />} />
+          <Route path="/jobs/new" element={<JobForm />} />
+        </Routes>
+      </Router>
+    </main>
+  );
+};
+
+export default Home;

@@ -1,6 +1,7 @@
 import { BASE_URL } from "../constants";
 import Job from "./JobSingle";
 import React from "react";
+import { deleteJob } from "../constants";
 
 export default class JobList extends React.Component {
   constructor(props) {
@@ -8,7 +9,22 @@ export default class JobList extends React.Component {
     this.state = {
       jobs: [],
     };
+    this.deleteHandler = this.deleteHandler.bind(this);
   }
+
+  deleteHandler(id) {
+    deleteJob(id).then((response) => {
+      let jobs = this.state.jobs.filter((job) => {
+        return job._id !== id;
+      });
+
+      this.setState({
+        jobs: jobs,
+      });
+      console.log("this is", this, " state", this.state, response);
+    });
+  }
+
   componentDidMount() {
     fetch(`${BASE_URL}/jobs`)
       .then((response) => response.json())
@@ -31,7 +47,12 @@ export default class JobList extends React.Component {
       <div>
         <h1> {h1Text} </h1>
         {this.state.jobs.map((job) => (
-          <Job key={job._id} job={job} jobLength={jobLength} />
+          <Job
+            key={job._id}
+            job={job}
+            jobLength={jobLength}
+            deleteHandler={this.deleteHandler}
+          />
         ))}
       </div>
     );

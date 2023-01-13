@@ -22,33 +22,40 @@ const JobForm = () => {
   };
 
   return (
-    <div>
+    <div className="flex">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col bg-slate-800 text-cyan-500 py-10 h-screen align-middle"
+        className="flex flex-col w-2/5 bg-slate-800 text-cyan-500 py-10 h-screen align-middle"
       >
-        <div className="w-full bg-amber-200 flex justify-center align-middle px-20 py-10">
+        <div className="w-full flex justify-center align-middle py-10">
           <input
-            className="w-1/2 bg-black py-2 rounded"
+            className="w-5/6 bg-black py-2 rounded"
             type="text"
             name="title"
             placeholder="Title"
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
-        <div className="w-full bg-amber-800 flex justify-center align-middle px-20 py-10">
+        <div className="w-full flex justify-center align-middle py-10">
           <textarea
-            className="w-1/2 bg-black py-2 rounded"
+            className="w-5/6 bg-black py-2 rounded"
             placeholder="Description"
             type="text"
             name="description"
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        <div className="w-full bg-amber-600 flex justify-center align-middle px-20 py-10">
-          <input type="submit" value="Submit" />
+        <div className="w-full  flex justify-center align-middle py-10">
+          <input
+            className="cursor-pointer border-gray-500 bg-black w-1/3 py-3 rounded text-xl"
+            type="submit"
+            value="Submit"
+          />
         </div>
       </form>
+      <div className="w-3/5">
+        <h2>Preview</h2>
+      </div>
     </div>
   );
 };

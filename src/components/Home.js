@@ -11,7 +11,7 @@ const routes = [
 ];
 const Home = () => {
   return (
-    <main className="bg-black">
+    <main className="my-auto mx-auto px-auto w-screen h-screen">
       <Router>
         <NavBar />
         <Routes>

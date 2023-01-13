@@ -21,7 +21,6 @@ export default class JobList extends React.Component {
       this.setState({
         jobs: jobs,
       });
-      console.log("this is", this, " state", this.state, response);
     });
   }
 

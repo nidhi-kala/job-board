@@ -22,14 +22,14 @@ const JobForm = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="grid grid-cols-3">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col w-2/5 bg-slate-800 text-cyan-500 py-10 h-screen align-middle"
+        className="col-span-1 flex flex-col container  text-cyan-500 py-10 h-screen align-middle"
       >
         <div className="w-full flex justify-center align-middle py-10">
           <input
-            className="w-5/6 bg-black py-2 rounded"
+            className="w-5/6 py-3 px-3 rounded"
             type="text"
             name="title"
             placeholder="Title"
@@ -38,23 +38,24 @@ const JobForm = () => {
         </div>
         <div className="w-full flex justify-center align-middle py-10">
           <textarea
-            className="w-5/6 bg-black py-2 rounded"
+            className="w-5/6 px-3 py-3 rounded"
             placeholder="Description"
             type="text"
             name="description"
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        <div className="w-full  flex justify-center align-middle py-10">
+        <div className="w-full flex justify-center align-middle py-10">
           <input
-            className="cursor-pointer border-gray-500 bg-black w-1/3 py-3 rounded text-xl"
+            className="cursor-pointer bg-cyan-700  w-1/3 py-3 rounded text-xl"
             type="submit"
             value="Submit"
           />
         </div>
       </form>
-      <div className="w-3/5">
-        <h2>Preview</h2>
+      <div className="col-span-2  h-full w-full flex flex-col py-10 px-20 justify-self-auto">
+        <h2 className="text-4xl mb-2 py-5">{title}</h2>
+        <p className="text-3xl mb-2">{description} </p>
       </div>
     </div>
   );

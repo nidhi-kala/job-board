@@ -1,6 +1,6 @@
 import { createJob } from "../constants";
 import { redirect, useNavigate } from "react-router-dom";
-
+import MultistepForm from "./MultistepForm";
 import React from "react";
 import { useState } from "react";
 
@@ -23,6 +23,7 @@ const JobForm = () => {
 
   return (
     <div className="grid grid-cols-3">
+      <MultistepForm />
       <form
         onSubmit={handleSubmit}
         className="col-span-1 flex flex-col container  text-cyan-500 py-10 h-screen align-middle"

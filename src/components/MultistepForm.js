@@ -46,16 +46,16 @@ const MultistepForm = () => {
       <form>
         <div></div>
         <div className="form-cont">
-          <div className="header">
+          <div className="text-2xl my-4">
             <h1> {formTitles[step]} </h1>
           </div>
           <div className="body">{stepDisplay()}</div>
-          <div className="footer">
+          <div className="my-4">
             <input
               type="button"
               value="Prev"
               onClick={() => buttonHandler("prev")}
-              className={`cursor-pointer `}
+              className={`cursor-pointer px-2 `}
             />
 
             <input

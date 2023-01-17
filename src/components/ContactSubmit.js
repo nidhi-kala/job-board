@@ -1,7 +1,13 @@
 const ContactSubmit = () => {
   return (
     <div>
-      <p>last Component</p>
+      <div>
+        <label htmlFor="email">Contact email</label>
+        <input type="email" name="" id="" />
+      </div>
+      <div className="my-4">
+        <input type="button" name="" id="" value="submit" />
+      </div>
     </div>
   );
 };

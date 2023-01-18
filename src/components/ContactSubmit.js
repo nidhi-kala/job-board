@@ -1,4 +1,4 @@
-const ContactSubmit = () => {
+const ContactSubmit = (formData, setFormData) => {
   return (
     <div>
       <div>

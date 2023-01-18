@@ -1,4 +1,4 @@
-const SalaryInfo = () => {
+const SalaryInfo = (formData, setFormData) => {
   return (
     <div className="py-2">
       <input

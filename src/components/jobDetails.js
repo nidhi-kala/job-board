@@ -1,4 +1,4 @@
-const JobDetails = () => {
+const JobDetails = (formData, setFormData) => {
   return (
     <div>
       <input

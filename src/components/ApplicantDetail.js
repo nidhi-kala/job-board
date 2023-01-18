@@ -1,4 +1,4 @@
-const ApplicantDetail = () => {
+const ApplicantDetail = (formData, setFormData) => {
   return (
     <div>
       <h2 className="text-lg">Applicant Location</h2>

@@ -6,7 +6,18 @@ import ContactSubmit from "./ContactSubmit";
 
 const MultistepForm = () => {
   const [step, setStep] = useState(0);
-
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    employmentType: "full-time",
+    applicantLocation: [],
+    link: "",
+    expLevel: "",
+    minSalary: 0,
+    maxSalary: 0,
+    salaryPeriod: "yearly",
+    email: "",
+  });
   const formTitles = [
     "Job Details",
     "Applicant Details",
@@ -16,19 +27,21 @@ const MultistepForm = () => {
   const stepDisplay = () => {
     switch (step) {
       case 0:
-        return <JobDetails />;
+        return <JobDetails formData={formData} setFormData={setFormData} />;
         break;
       case 1:
-        return <ApplicantDetail />;
+        return (
+          <ApplicantDetail formData={formData} setFormData={setFormData} />
+        );
         break;
       case 2:
-        return <SalaryInfo />;
+        return <SalaryInfo formData={formData} setFormData={setFormData} />;
         break;
       case 3:
-        return <ContactSubmit />;
+        return <ContactSubmit formData={formData} setFormData={setFormData} />;
         break;
       default:
-        return <JobDetails />;
+        return <JobDetails formData={formData} setFormData={setFormData} />;
     }
   };
 
@@ -57,7 +70,6 @@ const MultistepForm = () => {
               onClick={() => buttonHandler("prev")}
               className={`cursor-pointer px-2 `}
             />
-
             <input
               type="button"
               value="Next"

@@ -9,24 +9,24 @@ const ApplicantDetail = (formData, setFormData) => {
         </div>
         <div>
           <input type="checkbox" value="north america" />
-          <label htmlFor="anywhere">North America</label>
+          <label htmlFor="north america">North America</label>
         </div>
         <div>
           <input type="checkbox" value="south america" />
-          <label htmlFor="anywhere">South America</label>
+          <label htmlFor="south america">South America</label>
         </div>
         <div>
           <input type="checkbox" value="europe" />
-          <label htmlFor="anywhere">Europe</label>
+          <label htmlFor="europe">Europe</label>
         </div>
         <div>
           <input type="checkbox" value="asia" />
-          <label htmlFor="anywhere">Asia</label>
+          <label htmlFor="asia">Asia</label>
         </div>
       </div>
       <div className="py-2">
         <label htmlFor="link">Apply Link</label>
-        <input type="url" name="" id="" />
+        <input type="url" name="link" id="" />
       </div>
       <div className="flex flex-col py-2">
         <label className="" htmlFor="">

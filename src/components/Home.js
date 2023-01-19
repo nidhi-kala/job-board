@@ -1,14 +1,10 @@
 import { createJob } from "../constants";
 import React from "react";
 import JobList from "./JobList";
-import JobForm from "./Form";
+import MultistepForm from "./MultistepForm";
 import NavBar from "./Nav";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 
-const routes = [
-  { path: "/", element: <JobList /> },
-  { path: "/jobForm", element: <JobForm /> },
-];
 const Home = () => {
   return (
     <main className="my-auto mx-auto px-auto w-screen h-screen">
@@ -16,7 +12,7 @@ const Home = () => {
         <NavBar />
         <Routes>
           <Route path="/" element={<JobList />} />
-          <Route path="/jobs/new" element={<JobForm />} />
+          <Route path="/jobs/new" element={<MultistepForm />} />
         </Routes>
       </Router>
     </main>

@@ -1,10 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-const JobDetails = ({ formData, setFormData }) => {
-  const changeHandler = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
+const JobDetails = ({ formData, changeHandler, checked, checkedHandler }) => {
   return (
     <div>
       <input
@@ -28,23 +24,44 @@ const JobDetails = ({ formData, setFormData }) => {
       <div className="flex flex-col">
         <h2>Employment Type</h2>
         <div>
-          <input type="radio" name="employmentType" id="" value="full-time" />
+          <input
+            type="checkbox"
+            checked={checked}
+            name="employmentType"
+            id=""
+            value="full-time"
+          />
           <label htmlFor="">Full Time</label>
         </div>
         <div>
-          <input type="radio" name="employmentType" id="" value="part-time" />
+          <input
+            type="checkbox"
+            name="employmentType"
+            id=""
+            value="part-time"
+          />
           <label htmlFor="">Part Time</label>
         </div>
         <div>
-          <input type="radio" name="employmentType" id="" value="contract" />
+          <input type="checkbox" name="employmentType" id="" value="contract" />
           <label htmlFor="">Contract</label>
         </div>
         <div>
-          <input type="radio" name="employmentType" id="" value="temporary" />
+          <input
+            type="checkbox"
+            name="employmentType"
+            id=""
+            value="temporary"
+          />
           <label htmlFor="">Temporary</label>
         </div>
         <div>
-          <input type="radio" name="employmentType" id="" value="internship" />
+          <input
+            type="checkbox"
+            name="employmentType"
+            id=""
+            value="internship"
+          />
           <label htmlFor="">Internship</label>
         </div>
       </div>

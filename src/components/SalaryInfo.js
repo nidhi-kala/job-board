@@ -1,18 +1,24 @@
-const SalaryInfo = (formData, setFormData) => {
+const SalaryInfo = ({ formData, changeHandler }) => {
   return (
     <div className="py-2">
+      <label htmlFor="minSalary">Minimum Salary</label>
       <input
         type="text"
         inputMode="numeric"
-        name="min-salary"
+        name="minSalary"
         id=""
+        onChange={changeHandler}
+        value={formData.minSalary}
         placeholder="Minimum Salary"
         className="px-3 py-1 rounded my-3"
       />
+      <label htmlFor="maxSalary">Maximum Salary</label>
       <input
         type="text"
         inputMode="numeric"
-        name="max-salary"
+        name="maxSalary"
+        onChange={changeHandler}
+        value={formData.maxSalary}
         id=""
         placeholder="Maximum Salary"
         className="px-3 py-1 rounded my-3"

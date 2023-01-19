@@ -6,7 +6,6 @@ import ContactSubmit from "./ContactSubmit";
 
 const MultistepForm = () => {
   const [step, setStep] = useState(0);
-
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -14,11 +13,18 @@ const MultistepForm = () => {
     applicantLocation: [],
     link: "",
     expLevel: "",
-    minSalary: 0,
-    maxSalary: 0,
+    minSalary: Number,
+    maxSalary: Number,
     salaryPeriod: "yearly",
     email: "",
   });
+
+  const [checked, setChecked] = useState(false);
+
+  const checkedHandler = () => {
+    setChecked(!checked);
+  };
+
   const formTitles = [
     "Job Details",
     "Applicant Details",
@@ -33,6 +39,8 @@ const MultistepForm = () => {
             formData={formData}
             setFormData={setFormData}
             changeHandler={changeHandler}
+            checked={checked}
+            checkHandler={checkedHandler}
           />
         );
         break;
@@ -42,6 +50,8 @@ const MultistepForm = () => {
             formData={formData}
             setFormData={setFormData}
             changeHandler={changeHandler}
+            checked={checked}
+            checkHandler={checkedHandler}
           />
         );
         break;
@@ -51,6 +61,8 @@ const MultistepForm = () => {
             formData={formData}
             setFormData={setFormData}
             changeHandler={changeHandler}
+            checked={checked}
+            checkHandler={checkedHandler}
           />
         );
         break;
@@ -60,6 +72,8 @@ const MultistepForm = () => {
             formData={formData}
             setFormData={setFormData}
             changeHandler={changeHandler}
+            checked={checked}
+            checkHandler={checkedHandler}
           />
         );
         break;

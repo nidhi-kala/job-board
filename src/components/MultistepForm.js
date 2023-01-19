@@ -6,6 +6,7 @@ import ContactSubmit from "./ContactSubmit";
 
 const MultistepForm = () => {
   const [step, setStep] = useState(0);
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -27,22 +28,53 @@ const MultistepForm = () => {
   const stepDisplay = () => {
     switch (step) {
       case 0:
-        return <JobDetails formData={formData} setFormData={setFormData} />;
+        return (
+          <JobDetails
+            formData={formData}
+            setFormData={setFormData}
+            changeHandler={changeHandler}
+          />
+        );
         break;
       case 1:
         return (
-          <ApplicantDetail formData={formData} setFormData={setFormData} />
+          <ApplicantDetail
+            formData={formData}
+            setFormData={setFormData}
+            changeHandler={changeHandler}
+          />
         );
         break;
       case 2:
-        return <SalaryInfo formData={formData} setFormData={setFormData} />;
+        return (
+          <SalaryInfo
+            formData={formData}
+            setFormData={setFormData}
+            changeHandler={changeHandler}
+          />
+        );
         break;
       case 3:
-        return <ContactSubmit formData={formData} setFormData={setFormData} />;
+        return (
+          <ContactSubmit
+            formData={formData}
+            setFormData={setFormData}
+            changeHandler={changeHandler}
+          />
+        );
         break;
       default:
-        return <JobDetails formData={formData} setFormData={setFormData} />;
+        return (
+          <JobDetails
+            formData={formData}
+            setFormData={setFormData}
+            changeHandler={changeHandler}
+          />
+        );
     }
+  };
+  const changeHandler = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const buttonHandler = (direction) => {

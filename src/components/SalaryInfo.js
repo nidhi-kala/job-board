@@ -1,6 +1,6 @@
-const SalaryInfo = ({ formData, changeHandler }) => {
+const SalaryInfo = ({ formData, setFormData, changeHandler }) => {
   return (
-    <div className="py-2">
+    <div className="py-2 flex flex-col">
       <label htmlFor="minSalary">Minimum Salary</label>
       <input
         type="text"
@@ -27,7 +27,13 @@ const SalaryInfo = ({ formData, changeHandler }) => {
         <label className="py-2" htmlFor="">
           Salary Period
         </label>
-        <select name="salary-period" id="">
+        <select
+          name="salaryPeriod"
+          onChange={(e) => {
+            setFormData({ ...formData, salaryPeriod: e.target.value });
+          }}
+          id=""
+        >
           <option value="yearly">Yearly</option>
           <option value="monthly">Monthly</option>
           <option value="hourly">Hourly</option>

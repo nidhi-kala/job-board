@@ -9,20 +9,41 @@ const MultistepForm = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    employmentType: "full-time",
-    applicantLocation: [],
+    employmentType: {
+      "full-time": false,
+      "part-time": false,
+      contract: false,
+      temporary: false,
+      internship: false,
+    },
+    applicantLocation: {
+      anywhere: false,
+      "north-america": false,
+      "south-america": false,
+      europe: false,
+      asia: false,
+    },
     link: "",
     expLevel: "",
-    minSalary: Number,
-    maxSalary: Number,
+    minSalary: "",
+    maxSalary: "",
     salaryPeriod: "yearly",
     email: "",
   });
 
-  const [checked, setChecked] = useState(false);
+  const checkedHandler = (e) => {
+    const { value, checked, name } = e.target;
+    const oldValues = formData[name];
 
-  const checkedHandler = () => {
-    setChecked(!checked);
+    const newValues = {
+      ...oldValues,
+      [value]: checked,
+    };
+
+    setFormData({
+      ...formData,
+      [name]: newValues,
+    });
   };
 
   const formTitles = [
@@ -39,8 +60,7 @@ const MultistepForm = () => {
             formData={formData}
             setFormData={setFormData}
             changeHandler={changeHandler}
-            checked={checked}
-            checkHandler={checkedHandler}
+            checkedHandler={checkedHandler}
           />
         );
         break;
@@ -50,8 +70,7 @@ const MultistepForm = () => {
             formData={formData}
             setFormData={setFormData}
             changeHandler={changeHandler}
-            checked={checked}
-            checkHandler={checkedHandler}
+            checkedHandler={checkedHandler}
           />
         );
         break;
@@ -61,8 +80,7 @@ const MultistepForm = () => {
             formData={formData}
             setFormData={setFormData}
             changeHandler={changeHandler}
-            checked={checked}
-            checkHandler={checkedHandler}
+            checkedHandler={checkedHandler}
           />
         );
         break;
@@ -72,19 +90,11 @@ const MultistepForm = () => {
             formData={formData}
             setFormData={setFormData}
             changeHandler={changeHandler}
-            checked={checked}
-            checkHandler={checkedHandler}
+            checkedHandler={checkedHandler}
           />
         );
         break;
       default:
-        return (
-          <JobDetails
-            formData={formData}
-            setFormData={setFormData}
-            changeHandler={changeHandler}
-          />
-        );
     }
   };
   const changeHandler = (e) => {
@@ -101,15 +111,14 @@ const MultistepForm = () => {
   };
 
   return (
-    <div>
+    <div className="flex">
       <form>
-        <div></div>
-        <div className="form-cont">
+        <div className="h-screen w-full">
           <div className="text-2xl my-4">
             <h1> {formTitles[step]} </h1>
           </div>
-          <div className="body">{stepDisplay()}</div>
-          <div className="my-4">
+          <div className="h-1/2 flex flex-col ">{stepDisplay()}</div>
+          <div className="">
             <input
               type="button"
               value="Prev"
@@ -125,6 +134,36 @@ const MultistepForm = () => {
           </div>
         </div>
       </form>
+      <div>
+        <div>
+          <h2>{formData.title}</h2>
+          <ul>
+            {Object.entries(formData.applicantLocation).map(
+              ([location, value], key) => {
+                if (value === true) {
+                  return <li key={key}> {location} </li>;
+                }
+              }
+            )}
+          </ul>
+          <ul>
+            {Object.entries(formData.employmentType).map(
+              ([type, value], key) => {
+                if (value === true) {
+                  return <li key={key}> {type} </li>;
+                }
+              }
+            )}
+          </ul>
+          <div>{formData.expLevel === "none" ? " " : formData.expLevel}</div>
+          <div>
+            <p>{formData.description}</p>
+          </div>
+          <div>
+            <p>{formData.link}</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

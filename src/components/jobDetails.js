@@ -1,8 +1,19 @@
 import React from "react";
 
-const JobDetails = ({ formData, changeHandler, checked, checkedHandler }) => {
+const JobDetails = ({ formData, changeHandler, checkedHandler }) => {
+  const employmentTypes = {
+    "full-time": "Full Time",
+    "part-time": "Part Time",
+    contract: "Contract",
+    temporary: "Temporary",
+    internship: "Intership",
+  };
+
   return (
-    <div>
+    <div
+      className="flex flex-col w-full
+    "
+    >
       <input
         required
         className="px-3 py-3 rounded my-3"
@@ -22,48 +33,24 @@ const JobDetails = ({ formData, changeHandler, checked, checkedHandler }) => {
         name="description"
       />
       <div className="flex flex-col">
-        <h2>Employment Type</h2>
-        <div>
-          <input
-            type="checkbox"
-            checked={checked}
-            name="employmentType"
-            id=""
-            value="full-time"
-          />
-          <label htmlFor="">Full Time</label>
-        </div>
-        <div>
-          <input
-            type="checkbox"
-            name="employmentType"
-            id=""
-            value="part-time"
-          />
-          <label htmlFor="">Part Time</label>
-        </div>
-        <div>
-          <input type="checkbox" name="employmentType" id="" value="contract" />
-          <label htmlFor="">Contract</label>
-        </div>
-        <div>
-          <input
-            type="checkbox"
-            name="employmentType"
-            id=""
-            value="temporary"
-          />
-          <label htmlFor="">Temporary</label>
-        </div>
-        <div>
-          <input
-            type="checkbox"
-            name="employmentType"
-            id=""
-            value="internship"
-          />
-          <label htmlFor="">Internship</label>
-        </div>
+        <h2 className="pb-2 pt-3">Employment Type</h2>
+        {Object.entries(employmentTypes).map(([type, label], key) => {
+          return (
+            <div key={key} className="flex flex-row mx-2">
+              <input
+                className="mx-2"
+                type="checkbox"
+                onChange={checkedHandler}
+                checked={formData.employmentType[type]}
+                name="employmentType"
+                value={type}
+              />
+              <label htmlFor="employmentType" onChange={checkedHandler}>
+                {label}
+              </label>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
